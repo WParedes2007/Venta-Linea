@@ -55,31 +55,45 @@ export const getUserById = async (req, res) => {
     }
 }
 
-export const updateUser = async(req, res = response) => {
+export const updateUser = async (req, res = response) => {
     try {
-        const {id} = req.params;
-        const {_id, password, email, ...data} = req.body;
+        const { id } = req.params;
+        const { password, ...data } = req.body;
 
-        if(password){
-            data.password = await hash(password)
+        if (req.usuario.role === "CLIENT_ROLE" && id !== req.usuario._id.toString()) {
+            return res.status(403).json({
+                success: false,
+                msg: "No Hay Autorizacion Para Actualizar La Información De Otro Usuario"
+            });
         }
 
-        const user = await User.findByIdAndUpdate(id, data, {new: true});
+        if (password) {
+            data.password = await hash(password);
+        }
+
+        const user = await User.findByIdAndUpdate(id, data, { new: true });
+
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                msg: "Usuario no encontrado"
+            });
+        }
 
         res.status(200).json({
             success: true,
             msg: "Usuario Actualizado!",
             user
-        })
+        });
 
     } catch (error) {
         res.status(500).json({
             success: false,
-            msg: "Error Al Actualizar User",
+            msg: "Error Al Actualizar Usuario",
             error
-        })
+        });
     }
-}
+};
 
 export const updatePassword = async (req, res) => {
     try {
@@ -121,6 +135,35 @@ export const updatePassword = async (req, res) => {
         });
     }
 }
+
+
+export const unsubscribeStudent = async (req, res) => {
+    try {
+        const userId = req.usuario._id; 
+        const user = await User.findByIdAndUpdate(userId, { estado: false }, { new: true });
+
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                msg: 'Usuario no encontrado'
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            msg: 'Sesion Cerrada Existosamente',
+            user
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            msg: 'Error al Cerrar Sesion',
+            error
+        });
+    }
+};
+
+
 
 
 export const deleteUser = async (req, res)=>{
