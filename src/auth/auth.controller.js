@@ -38,8 +38,7 @@ export const login = async (req, res) => {
             msg: "Inicio De Sesion Exitoso!",
             userDetails: {
                 username: user.username,
-                token: token,
-                profile_picture: user.profile_picture
+                token: token
             }
         })
 
@@ -57,8 +56,6 @@ export const register  = async (req, res) => {
     try {
         const data = req.body;
 
-        let profile_picture = req.file ? req.file.filename : null;
-
         const encryptedPassword = await hash(data.password);
 
         const user = await Usuario.create({
@@ -68,8 +65,7 @@ export const register  = async (req, res) => {
             email: data.email,
             phone: data.phone,
             password: encryptedPassword,
-            role: data.role,
-            profile_picture
+            role: data.role || "USER_ROLE"
         })
 
         return res.status(201).json({

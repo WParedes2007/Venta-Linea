@@ -9,8 +9,8 @@ import limiter from '../src/middlewares/validar-cant-peticiones.js'
 import authRoutes from '../src/auth/auth.routes.js'
 import userRoutes from "../src/users/user.routes.js"
 import categoryRoutes from "../src/categories/category.routes.js"
-/*import productRoutes from "../src/products/products.routes.js"
-import billsRoute from "../src/bills/bills.routes.js"*/
+import productRoutes from "../src/products/product.routes.js"
+/*import billsRoute from "../src/bills/bills.routes.js"*/
 
 
 const configurarMiddlewares = (app) => {
@@ -26,7 +26,8 @@ const configurarRutas = (app) =>{
         app.use("/onlineSale/v1/auth", authRoutes);
         app.use("/onlineSale/v1/users", userRoutes);
         app.use("/onlineSale/v1/categories", categoryRoutes);
-        /*app.use("/onlineSale/v1/products", productRoutes);
+        app.use("/onlineSale/v1/products", productRoutes);
+        /*
         app.use("/onlineSale/v1/bills", billsRoute);*/
 }
 

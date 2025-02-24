@@ -22,12 +22,6 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, "La Contraseña Es Obligatoria"]
     },
-    profile_picture:{
-        type: String,
-    },
-    img:{
-        type: String,
-    },
     phone: {
         type: String,
         minlength:8,
