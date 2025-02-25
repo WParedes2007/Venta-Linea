@@ -12,6 +12,8 @@ import categoryRoutes from "../src/categories/category.routes.js"
 import productRoutes from "../src/products/product.routes.js"
 import billsRoutes from "../src/bills/bill.routes.js"
 import purchaseRoutes from "../src/purchases/purchase.routes.js"
+import cartRoutes from "../src/carts/cart.routes.js"
+
 
 
 const configurarMiddlewares = (app) => {
@@ -30,6 +32,7 @@ const configurarRutas = (app) =>{
         app.use("/onlineSale/v1/products", productRoutes);
         app.use("/onlineSale/v1/bills", billsRoutes);
         app.use("/onlineSale/v1/purchases", purchaseRoutes);
+        app.use("/onlineSale/v1/carts", cartRoutes);
 }
 
 const conectarDB = async () => {

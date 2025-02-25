@@ -1,11 +1,11 @@
 import Bill from "./bill.model.js";
 import Product from "../products/product.model.js";
 import User from "../users/user.model.js";
+import Cart from "../carts/cart.model.js"; 
 
 export const createBill = async (req, res) => {
     const { products, shippingAddress } = req.body;
     try {
-        // Verificar existencia del usuario
         const user = await User.findById(req.usuario._id);
         if (!user) {
             return res.status(404).json({
@@ -14,28 +14,18 @@ export const createBill = async (req, res) => {
             });
         }
 
-        // Calcular el total de la factura y validar stock
         let total = 0;
         for (let i = 0; i < products.length; i++) {
             const product = await Product.findById(products[i].product);
-            if (!product) {
+            if (!product || product.stock < products[i].quantity) {
                 return res.status(400).json({
                     success: false,
-                    message: `Producto no encontrado: ${products[i].product}`
+                    message: `Stock insuficiente o producto no encontrado: ${products[i].product}`
                 });
             }
-
-            if (product.stock < products[i].quantity) {
-                return res.status(400).json({
-                    success: false,
-                    message: `Stock insuficiente para el producto ${product.name}`
-                });
-            }
-
             total += product.price * products[i].quantity;
         }
 
-        // Crear factura
         const bill = new Bill({
             user: user._id,
             products,
@@ -43,26 +33,27 @@ export const createBill = async (req, res) => {
             shippingAddress
         });
 
-        // Reducir stock de los productos
         for (let i = 0; i < products.length; i++) {
             await Product.findByIdAndUpdate(products[i].product, {
                 $inc: { stock: -products[i].quantity }
             });
         }
 
-        // Guardar factura
         await bill.save();
+
+        await Cart.findOneAndDelete({ user: user._id });
 
         res.status(200).json({
             success: true,
-            message: "Factura creada exitosamente",
+            message: "Compra realizada exitosamente",
             bill
         });
+        
     } catch (error) {
         console.error(error);
         res.status(500).json({
             success: false,
-            message: "Error al crear la factura",
+            message: "Error al procesar la compra",
             error
         });
     }
