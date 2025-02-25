@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { saveProduct, getProducts, searchProduct, deleteProduct, updateProduct } from "./product.controller.js";
+import { saveProduct, getProducts, searchProduct, deleteProduct, updateProduct, getBestSellingProducts, getOutOfStockProducts} from "./product.controller.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
 import { validarJWT } from "../middlewares/validar-jwt.js";
 
@@ -29,6 +29,19 @@ router.get(
         validarCampos
     ],
     searchProduct
+);
+
+router.get("/out-of-stock", 
+    [
+        validarJWT
+    ],
+    getOutOfStockProducts
+);
+
+router.get("/best-selling", 
+    [
+        validarJWT
+    ], getBestSellingProducts
 );
 
 router.put(

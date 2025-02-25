@@ -10,7 +10,8 @@ import authRoutes from '../src/auth/auth.routes.js'
 import userRoutes from "../src/users/user.routes.js"
 import categoryRoutes from "../src/categories/category.routes.js"
 import productRoutes from "../src/products/product.routes.js"
-/*import billsRoute from "../src/bills/bills.routes.js"*/
+import billsRoutes from "../src/bills/bill.routes.js"
+import purchaseRoutes from "../src/purchases/purchase.routes.js"
 
 
 const configurarMiddlewares = (app) => {
@@ -27,8 +28,8 @@ const configurarRutas = (app) =>{
         app.use("/onlineSale/v1/users", userRoutes);
         app.use("/onlineSale/v1/categories", categoryRoutes);
         app.use("/onlineSale/v1/products", productRoutes);
-        /*
-        app.use("/onlineSale/v1/bills", billsRoute);*/
+        app.use("/onlineSale/v1/bills", billsRoutes);
+        app.use("/onlineSale/v1/purchases", purchaseRoutes);
 }
 
 const conectarDB = async () => {

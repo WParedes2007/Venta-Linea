@@ -107,10 +107,8 @@ export const updatePassword = async (req, res) => {
             });
         }
 
-        // Crea la contraseña encriptada
         const encryptedPassword = await hash(password);
 
-        // Actualiza el usuario en la base de datos
         const user = await User.findByIdAndUpdate(id, { password: encryptedPassword }, { new: true });
 
         if (!user) {
@@ -127,7 +125,7 @@ export const updatePassword = async (req, res) => {
         });
 
     } catch (error) {
-        console.error(error); // Para depuración
+        console.error(error); 
         res.status(500).json({
             success: false,
             msg: 'Error al Actualizar La Contraseña',

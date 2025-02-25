@@ -181,3 +181,41 @@ export const updateProduct = async (req, res) => {
         });
     }
 };
+
+export const getOutOfStockProducts = async (req, res) => {
+    try {
+        const products = await Product.find({ stock: 0, status: true }).populate("category", "name");
+
+        res.status(200).json({
+            success: true,
+            products
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Error al obtener productos agotados",
+            error
+        });
+    }
+};
+
+export const getBestSellingProducts = async (req, res) => {
+    try {
+        const products = await Product.find({ status: true })
+            .sort({ sales: -1 })
+            .limit(10)
+            .populate("category", "name");
+
+        res.status(200).json({
+            success: true,
+            products
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Error al obtener productos más vendidos",
+            error
+        });
+    }
+};
+
