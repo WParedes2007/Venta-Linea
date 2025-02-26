@@ -1,4 +1,5 @@
 import Category from "../categories/category.model.js"
+import Product from "../products/product.model.js"
 
 export const createCategory = async (req, res) => {
     try {
@@ -69,7 +70,7 @@ export const deleteCategory = async (req, res) => {
             });
         }
 
-        await Post.updateMany({ category: id }, { category: defaultCategory._id });
+        await Product.updateMany({ category: id }, { category: defaultCategory._id });
 
         await Category.findByIdAndUpdate(id, { status: false });
 

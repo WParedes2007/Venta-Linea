@@ -52,35 +52,37 @@ export const login = async (req, res) => {
     }
 }
 
-export const register  = async (req, res) => {
+export const register = async (req, res) => {
     try {
-        const data = req.body;
+        const { name, surname, username, email, phone, password, role } = req.body; 
 
-        const encryptedPassword = await hash(data.password);
+        const encryptedPassword = await hash(password);
+
+        const userRole = role && role.trim() !== "" ? role : "CLIENT_ROLE"; 
 
         const user = await Usuario.create({
-            name: data.name,
-            surname: data.surname,
-            username: data.username,
-            email: data.email,
-            phone: data.phone,
+            name,
+            surname,
+            username,
+            email,
+            phone,
             password: encryptedPassword,
-            role: data.role || "USER_ROLE"
-        })
+            role: userRole 
+        });
 
         return res.status(201).json({
-            message: "User Register Successfully",
-            userDetails:{
+            message: "Usuario Registrado Exitosamente",
+            userDetails: {
                 user: user.email
             }
-        })
+        });
 
     } catch (error) {
         console.log(error);
 
         return res.status(500).json({
-            message: "User Registration Failed",
+            message: "Error al Registrar Usuario",
             error: error.message
-        })
+        });
     }
-}
+};

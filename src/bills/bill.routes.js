@@ -1,23 +1,18 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { createBill, getUserBills, getBillById, cancelBill } from "./bill.controller.js";
+import { getUserBills, getBillById, cancelBill, updateBill, markBillAsPaid } from "./bill.controller.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
 import { validarJWT } from "../middlewares/validar-jwt.js";
+import {validarRol} from "../middlewares/validar-roles.js"
 
 const router = Router();
 
-router.post(
-    "/",
+router.get("/", 
     [
         validarJWT,
-        check("products", "Los productos son obligatorios").isArray().notEmpty(),
-        check("shippingAddress", "La dirección de envío es obligatoria").not().isEmpty(),
-        validarCampos
+        validarRol("ADMIN_ROLE"),
     ],
-    createBill
-);
-
-router.get("/", validarJWT, getUserBills);
+    getUserBills);
 
 router.get(
     "/:id",
@@ -33,10 +28,35 @@ router.put(
     "/cancel/:id",
     [
         validarJWT,
+        validarRol("ADMIN_ROLE"),
         check("id", "No es un ID válido").isMongoId(),
         validarCampos
     ],
     cancelBill
 );
+
+router.put(
+    "/:id",
+    [
+        validarJWT,
+        validarRol("ADMIN_ROLE"),
+        check("id", "No es un ID válido").isMongoId(),
+        validarCampos
+    ],
+    updateBill
+);
+
+router.put(
+    "/paid/:id", 
+    [
+        validarJWT,  
+        validarRol("ADMIN_ROLE"), 
+        check("id", "No es un ID válido").isMongoId(), 
+        validarCampos 
+    ], 
+    markBillAsPaid
+);
+
+
 
 export default router;

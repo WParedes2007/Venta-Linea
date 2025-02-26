@@ -41,14 +41,26 @@ export const saveProduct = async (req, res) => {
 };
 
 export const getProducts = async (req, res) => {
-    const { limite = 10, desde = 0 } = req.query;
+    const { limite = 10, desde = 0, sort = "name", order = "asc", category = "", name = "" } = req.query;
+
     const query = { status: true };
+
+    if (category) {
+        query.category = category;
+    }
+
+    if (name) {
+        query.name = { $regex: name, $options: 'i' };  
+    }
+
+    const sortBy = order === "asc" ? 1 : -1;
 
     try {
         const products = await Product.find(query)
-            .populate("category", "name") // Poblamos la categoría
-            .skip(Number(desde))
-            .limit(Number(limite));
+            .populate("category", "name") 
+            .skip(Number(desde))  
+            .limit(Number(limite))  
+            .sort({ [sort]: sortBy });  
 
         const total = await Product.countDocuments(query);
 
@@ -57,7 +69,6 @@ export const getProducts = async (req, res) => {
             total,
             products
         });
-
     } catch (error) {
         res.status(500).json({
             success: false,
@@ -66,6 +77,7 @@ export const getProducts = async (req, res) => {
         });
     }
 };
+
 
 export const searchProduct = async (req, res) => {
     const { id } = req.params;

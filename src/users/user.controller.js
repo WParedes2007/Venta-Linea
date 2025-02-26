@@ -3,57 +3,56 @@ import { hash } from "argon2";
 import User from "./user.model.js";
 
 
-export const getUsers = async(req = request, res = response) => {
+export const getUsers = async (req = request, res = response) => {
     try {
-        const{limite = 10, desde = 0} = req.query;
+        const { limite = 10, desde = 0 } = req.query;
 
-        const query = {estado : true}
+        const query = { estado: true };
 
-        const[total, users] = await Promise.all([
+        const [total, users] = await Promise.all([
             User.countDocuments(query),
             User.find(query)
-            .skip(Number(desde))
-            .limit(Number(limite))
-        ])
+                .skip(Number(desde))
+                .limit(Number(limite))
+        ]);
 
         res.status(200).json({
-            succes: true,
+            success: true,
             total,
             users
-        })
+        });
     } catch (error) {
         res.status(500).json({
             success: false,
-            message: "Error Al Obtener Usuario",
+            message: "Error al obtener usuario",
             error
-        })
+        });
     }
-}
+};
 
 export const getUserById = async (req, res) => {
     try {
-        const {id} = req.params;
-        const user = await User.findById(id);   
-        console.log("prueba1");
-        if(!user){
+        const { id } = req.params;
+        const user = await User.findById(id);
+        if (!user) {
             return res.status(404).json({
                 success: false,
                 msg: "Usuario Not Found"
-            })
+            });
         }
 
         res.status(200).json({
             success: true,
             user
-        })
+        });
     } catch (error) {
         res.status(500).json({
-            success:false,
-            msg: "Error Al Obtener Usuario",
+            success: false,
+            msg: "Error al obtener usuario",
             error
-        })
+        });
     }
-}
+};
 
 export const updateUser = async (req, res = response) => {
     try {
@@ -89,7 +88,7 @@ export const updateUser = async (req, res = response) => {
     } catch (error) {
         res.status(500).json({
             success: false,
-            msg: "Error Al Actualizar Usuario",
+            msg: "Error al actualizar usuario",
             error
         });
     }
@@ -97,13 +96,13 @@ export const updateUser = async (req, res = response) => {
 
 export const updatePassword = async (req, res) => {
     try {
-        const { id } = req.params; 
+        const { id } = req.params;
         const { password } = req.body;
 
         if (!password) {
             return res.status(400).json({
-                success: false, 
-                msg: "La Contraseña No Coincide"
+                success: false,
+                msg: "La contraseña no coincide"
             });
         }
 
@@ -114,76 +113,66 @@ export const updatePassword = async (req, res) => {
         if (!user) {
             return res.status(400).json({
                 success: false,
-                msg: "Usuario No Encontrado"
+                msg: "Usuario no encontrado"
             });
         }
 
         res.status(200).json({
             success: true,
-            msg: "Contraseña Actualizada Correctamente",
+            msg: "Contraseña actualizada correctamente",
             user
         });
 
     } catch (error) {
-        console.error(error); 
+        console.error(error);
         res.status(500).json({
             success: false,
-            msg: 'Error al Actualizar La Contraseña',
-            error  
-        });
-    }
-}
-
-
-export const unsubscribeStudent = async (req, res) => {
-    try {
-        const userId = req.usuario._id; 
-        const user = await User.findByIdAndUpdate(userId, { estado: false }, { new: true });
-
-        if (!user) {
-            return res.status(404).json({
-                success: false,
-                msg: 'Usuario no encontrado'
-            });
-        }
-
-        res.status(200).json({
-            success: true,
-            msg: 'Sesion Cerrada Existosamente',
-            user
-        });
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            msg: 'Error al Cerrar Sesion',
+            msg: "Error al actualizar la contraseña",
             error
         });
     }
 };
 
-
-
-
-export const deleteUser = async (req, res)=>{
+export const unsubscribe = async (req, res) => {
     try {
-        const { id } = req.params
-        const user = await User.findByIdAndUpdate(id,{estado: false}, {new:true});
-        
-        const authenticatedUser = req.user
+        const user = await User.findByIdAndUpdate(req.usuario._id, { estado: false }, { new: true });
+
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                msg: "Usuario no encontrado"
+            });
+        }
+
         res.status(200).json({
-            succes: true,
-            msg: 'Usuario desactivado',
-            user,
-            authenticatedUser
-        })
+            success: true,
+            msg: "Sesión cerrada exitosamente",
+            user
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            msg: "Error al cerrar sesión",
+            error
+        });
+    }
+};
 
+export const deleteUser = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const user = await User.findByIdAndUpdate(id, { estado: false }, { new: true });
 
-
-        } catch (error) {
-            res.status(500).json({
-                succes:false,
-                msg:'Error al Desactivar El Usuario',
-                error  
-                })
-}
-}
+        res.status(200).json({
+            success: true,
+            msg: "Usuario desactivado",
+            user
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            msg: "Error al desactivar el usuario",
+            error
+        });
+    }
+};

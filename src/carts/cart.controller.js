@@ -1,7 +1,6 @@
 import Cart from "./cart.model.js";
 import Product from "../products/product.model.js";
 
-// Obtener el carrito del usuario
 export const getCart = async (req, res) => {
     try {
         const cart = await Cart.findOne({ user: req.usuario._id })
@@ -17,7 +16,6 @@ export const getCart = async (req, res) => {
     }
 };
 
-// Agregar un producto al carrito
 export const addToCart = async (req, res) => {
     const { productId, quantity } = req.body;
     try {
@@ -49,7 +47,6 @@ export const addToCart = async (req, res) => {
     }
 };
 
-// Eliminar un producto del carrito
 export const removeFromCart = async (req, res) => {
     const { productId } = req.params;
     try {
@@ -67,7 +64,6 @@ export const removeFromCart = async (req, res) => {
     }
 };
 
-// Vaciar el carrito
 export const clearCart = async (req, res) => {
     try {
         await Cart.findOneAndDelete({ user: req.usuario._id });

@@ -3,14 +3,14 @@ import mongoose from "mongoose";
 const BillSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User",  // Referencia al modelo de usuario
+        ref: "User", 
         required: true
     },
     products: [
         {
             product: {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: "Product", // Referencia al producto
+                ref: "Product",
                 required: true
             },
             quantity: {
@@ -20,7 +20,7 @@ const BillSchema = new mongoose.Schema({
             },
             price: {
                 type: Number,
-                required: true
+                required: false
             }
         }
     ],

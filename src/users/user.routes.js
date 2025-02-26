@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { getUsers, getUserById, updateUser, deleteUser, updatePassword, unsubscribeStudent} from "./user.controller.js";
+import { getUsers, getUserById, updateUser, deleteUser, updatePassword, unsubscribe} from "./user.controller.js";
 import { existeUsuarioById } from "../helpers/db-validator.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
 import { validarRol } from "../middlewares/validar-roles.js";
@@ -24,6 +24,7 @@ router.get(
 router.put(
     "/:id",
     [
+        validarJWT,
         check("id", "No es un ID Valido").isMongoId(),
         check("id").custom(existeUsuarioById),
         validarCampos
@@ -46,9 +47,9 @@ router.delete(
     "/unsubscribe",
     [
         validarJWT,
-        validarRol("CLIENT_ROLE")
+        validarRol(["CLIENT_ROLE", "ADMIN_ROLE"])
     ],
-    unsubscribeStudent
+    unsubscribe
 );
 
 router.delete(

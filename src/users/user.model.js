@@ -32,7 +32,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, "El Rol Es Obligatorio"],
         enum: ["ADMIN_ROLE","CLIENT_ROLE"],
-        default: ["CLIENT_ROLE"]
+        default: "CLIENT_ROLE"
     },
     estado: {
         type: Boolean,

@@ -13,6 +13,7 @@ import productRoutes from "../src/products/product.routes.js"
 import billsRoutes from "../src/bills/bill.routes.js"
 import purchaseRoutes from "../src/purchases/purchase.routes.js"
 import cartRoutes from "../src/carts/cart.routes.js"
+import Category from "../src/categories/category.model.js"
 
 
 
@@ -35,10 +36,25 @@ const configurarRutas = (app) =>{
         app.use("/onlineSale/v1/carts", cartRoutes);
 }
 
+const initializeCategories = async () => {
+    try {
+        const defaultCategory = await Category.findOne({ name: "General" });
+        if (!defaultCategory) {
+            await Category.create({ name: "General" });
+            console.log("Categoría por defecto creada: General");
+        } else {
+            console.log("Categoría por defecto ya existente");
+        }
+    } catch (error) {
+        console.error("Error al inicializar categorías:", error);
+    }
+};
+
 const conectarDB = async () => {
     try {
         await dbConnection();
         console.log("Conexion Exitosa Con La Base De Datos");
+        await initializeCategories();
     } catch (error) {
         console.log("Error Al Conectar Con La Base De Datos", error);
     }
