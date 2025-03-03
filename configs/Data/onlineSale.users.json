@@ -1,12 +1,12 @@
 [{
   "_id": {
-    "$oid": "67bf60b7398485d8d0f8ada1"
+    "$oid": "67c33c58627e5975b5756579"
   },
-  "name": "Juan",
-  "surname": "Pérez",
-  "username": "juanperez",
-  "email": "juanperez@example.com",
-  "password": "$argon2id$v=19$m=65536,t=3,p=4$U+litSMAnZrp68n3qef5sA$iDWJ7RrLfBgzIZma5Letl5ku5nccp7NlWEXf7N173Ng",
+  "name": "Admin",
+  "surname": "Principal",
+  "username": "admin",
+  "email": "admin@gmail.com",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$MXgDGaYJ86VAoCfP7W8kSA$Nio0W0sLOYxL2Fyls8fGVsasuYDvB9HuMAYr1JxZMHU",
   "phone": "12345678",
   "role": "ADMIN_ROLE",
   "estado": true,
@@ -15,29 +15,14 @@
 },
 {
   "_id": {
-    "$oid": "67bf7de93284de97b07b0d25"
+    "$oid": "67c33e2a627e5975b5756596"
   },
-  "name": "Mario",
-  "surname": "Molina",
-  "username": "mariomolina",
-  "email": "mariomolina@example.com",
-  "password": "$argon2id$v=19$m=65536,t=3,p=4$g8lH766bOu5y6KAjZ5KC9Q$kxxlAWDRcu1O5zG4kkUs0C2pD/3j9gzthmctYS4pXIM",
+  "name": "Pichiya",
+  "surname": "Sisimit",
+  "username": "lpichiya",
+  "email": "lpichiya@example.com",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$5BRjDEeHZ8gLSrIzS/WEmQ$4X5JENV0dbdV7PrfCojm7NPBTlrk64if+dW70GqoS3k",
   "phone": "87654321",
-  "role": "CLIENT_ROLE",
-  "estado": false,
-  "google": false,
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "67bf7f93e56dff6b7307459f"
-  },
-  "name": "Mario",
-  "surname": "Molina",
-  "username": "mario123",
-  "email": "mario@example.com",
-  "password": "$argon2id$v=19$m=65536,t=3,p=4$m+tZqgVWDCm6LKYPxWBq7Q$K+zupn8pTSGT2hIwkOsgQ7dEMq8jEnOk6CnsBvGO3L0",
-  "phone": "987654321",
   "role": "CLIENT_ROLE",
   "estado": true,
   "google": false,

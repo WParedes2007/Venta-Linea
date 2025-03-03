@@ -14,6 +14,8 @@ import billsRoutes from "../src/bills/bill.routes.js"
 import purchaseRoutes from "../src/purchases/purchase.routes.js"
 import cartRoutes from "../src/carts/cart.routes.js"
 import Category from "../src/categories/category.model.js"
+import Usuario from "../src/users/user.model.js"
+import { hash } from "argon2"
 
 
 
@@ -35,6 +37,34 @@ const configurarRutas = (app) =>{
         app.use("/onlineSale/v1/purchases", purchaseRoutes);
         app.use("/onlineSale/v1/carts", cartRoutes);
 }
+
+const crearAdmin = async () => {
+    try {
+        const adminExistente = await Usuario.findOne({ email: "admin@gmail.com" });
+
+        if (!adminExistente) {
+
+            const passwordEncriptada = await hash("Admin123");
+
+            const admin = new Usuario({
+                name: "Admin",
+                surname: "Principal",
+                username: "admin",
+                email: "admin@gmail.com",
+                phone: "12345678",
+                password: passwordEncriptada,
+                role: "ADMIN_ROLE"
+            });
+
+            await admin.save(); 
+            console.log("Administrador creado exitosamente.");
+        } else {
+            console.log("El administrador ya existe.");
+        }
+    } catch (error) {
+        console.error("Error al crear el administrador:", error);
+    }
+};
 
 const initializeCategories = async () => {
     try {
@@ -65,6 +95,7 @@ export const iniciarServidor = async () => {
     const port = process.env.PORT || 3000;
 
     await conectarDB();
+    await crearAdmin();
     configurarMiddlewares(app);
     configurarRutas(app);
 

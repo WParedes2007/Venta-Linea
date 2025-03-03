@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { getUserBills, getBillById, cancelBill, updateBill, markBillAsPaid } from "./bill.controller.js";
+import { getUserBills, getBillById, cancelBill, updateBill, markBillAsPaid,checkout } from "./bill.controller.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
 import { validarJWT } from "../middlewares/validar-jwt.js";
 import {validarRol} from "../middlewares/validar-roles.js"
@@ -10,7 +10,6 @@ const router = Router();
 router.get("/", 
     [
         validarJWT,
-        validarRol("ADMIN_ROLE"),
     ],
     getUserBills);
 
@@ -56,6 +55,16 @@ router.put(
     ], 
     markBillAsPaid
 );
+
+router.post(
+    "/checkout",
+    [
+        validarJWT,
+        validarRol("CLIENT_ROLE"),
+    ],
+    checkout
+);
+
 
 
 

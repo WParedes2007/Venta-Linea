@@ -6,7 +6,12 @@ import { validarCampos } from "../middlewares/validar-campos.js";
 
 const router = Router();
 
-router.get("/", validarJWT, getCart);
+router.get("/", 
+    [
+    validarJWT
+    ],
+    getCart
+);
 
 router.post(
     "/add",
