@@ -2,6 +2,69 @@ import Bill from "./bill.model.js";
 import Product from "../products/product.model.js";
 import Cart from "../carts/cart.model.js"
 
+export const createBill = async (req, res) => {
+    const { cartId } = req.body; // Ahora solo recibimos el cartId
+
+    try {
+        // 1️⃣ Buscar el carrito del usuario y poblar los productos
+        const cart = await Cart.findOne({ _id: cartId, user: req.usuario._id }).populate("products.product");
+
+        if (!cart) {
+            return res.status(404).json({
+                success: false,
+                message: "El carrito no existe o no pertenece al usuario"
+            });
+        }
+
+        // 2️⃣ Verificar que el carrito tenga productos
+        if (cart.products.length === 0) {
+            return res.status(400).json({
+                success: false,
+                message: "El carrito está vacío, agrega productos antes de comprar"
+            });
+        }
+
+        // 3️⃣ Calcular el total de la compra
+        let total = 0;
+        const purchasedProducts = cart.products.map(item => {
+            total += item.product.price * item.quantity;
+            return {
+                product: item.product._id,
+                quantity: item.quantity,
+                priceAtPurchase: item.product.price
+            };
+        });
+
+        // 4️⃣ Crear la factura con los productos del carrito
+        const newBill = new Bill({
+            user: req.usuario._id,
+            products: purchasedProducts,
+            shippingAddress: req.usuario.address, // Toma la dirección del usuario si la tiene guardada
+            total,
+            status: "pending"
+        });
+
+        // 5️⃣ Guardar la factura y vaciar el carrito
+        await newBill.save();
+        cart.products = []; // Vaciar el carrito
+        await cart.save();
+
+        res.status(201).json({
+            success: true,
+            message: "Factura creada exitosamente",
+            bill: newBill
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Error al crear la factura",
+            error
+        });
+    }
+};
+
+
 export const getUserBills = async (req, res) => {
     try {
         let bills;

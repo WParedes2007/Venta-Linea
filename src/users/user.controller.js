@@ -54,41 +54,51 @@ export const getUserById = async (req, res) => {
     }
 };
 
-export const updateUser = async (req, res = response) => {
+export const updateUser = async (req, res) => {
+    const { id } = req.params;
+    const { role, ...rest } = req.body;
+
     try {
-        const { id } = req.params;
-        const { password, ...data } = req.body;
-
-        if (req.usuario.role === "CLIENT_ROLE" && id !== req.usuario._id.toString()) {
-            return res.status(403).json({
-                success: false,
-                msg: "No Hay Autorizacion Para Actualizar La Información De Otro Usuario"
-            });
-        }
-
-        if (password) {
-            data.password = await hash(password);
-        }
-
-        const user = await User.findByIdAndUpdate(id, data, { new: true });
-
+        const user = await User.findById(id);
         if (!user) {
             return res.status(404).json({
                 success: false,
-                msg: "Usuario no encontrado"
+                message: "Usuario no encontrado"
             });
         }
 
+        if (req.usuario.role !== "ADMIN_ROLE" && req.usuario._id.toString() !== id) {
+            return res.status(403).json({
+                success: false,
+                message: "No tienes permisos para editar a este usuario"
+            });
+        }
+
+        if (req.usuario.role !== "ADMIN_ROLE" && role) {
+            return res.status(403).json({
+                success: false,
+                message: "No tienes permisos para cambiar tu rol"
+            });
+        }
+
+        if (role && role === "ADMIN_ROLE" && req.usuario.role !== "ADMIN_ROLE") {
+            return res.status(403).json({
+                success: false,
+                message: "Solo los administradores pueden asignar el rol de administrador"
+            });
+        }
+
+        const updatedUser = await User.findByIdAndUpdate(id, { ...rest, role }, { new: true });
+
         res.status(200).json({
             success: true,
-            msg: "Usuario Actualizado!",
-            user
+            message: "Usuario actualizado correctamente",
+            updatedUser
         });
-
     } catch (error) {
         res.status(500).json({
             success: false,
-            msg: "Error al actualizar usuario",
+            message: "Error al actualizar el usuario",
             error
         });
     }
