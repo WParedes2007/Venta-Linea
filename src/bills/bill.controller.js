@@ -3,10 +3,16 @@ import Product from "../products/product.model.js";
 import Cart from "../carts/cart.model.js"
 
 export const createBill = async (req, res) => {
-    const { cartId } = req.body; // Ahora solo recibimos el cartId
+    const { cartId, shippingAddress } = req.body;
+
+    if (!shippingAddress || shippingAddress.trim() === "") {
+        return res.status(400).json({
+            success: false,
+            message: "El campo 'shippingAddress' es obligatorio y no puede estar vacío."
+        });
+    }
 
     try {
-        // 1️⃣ Buscar el carrito del usuario y poblar los productos
         const cart = await Cart.findOne({ _id: cartId, user: req.usuario._id }).populate("products.product");
 
         if (!cart) {
@@ -16,7 +22,6 @@ export const createBill = async (req, res) => {
             });
         }
 
-        // 2️⃣ Verificar que el carrito tenga productos
         if (cart.products.length === 0) {
             return res.status(400).json({
                 success: false,
@@ -24,7 +29,6 @@ export const createBill = async (req, res) => {
             });
         }
 
-        // 3️⃣ Calcular el total de la compra
         let total = 0;
         const purchasedProducts = cart.products.map(item => {
             total += item.product.price * item.quantity;
@@ -35,18 +39,16 @@ export const createBill = async (req, res) => {
             };
         });
 
-        // 4️⃣ Crear la factura con los productos del carrito
         const newBill = new Bill({
             user: req.usuario._id,
             products: purchasedProducts,
-            shippingAddress: req.usuario.address, // Toma la dirección del usuario si la tiene guardada
+            shippingAddress,
             total,
             status: "pending"
         });
 
-        // 5️⃣ Guardar la factura y vaciar el carrito
         await newBill.save();
-        cart.products = []; // Vaciar el carrito
+        cart.products = []; 
         await cart.save();
 
         res.status(201).json({
@@ -63,6 +65,7 @@ export const createBill = async (req, res) => {
         });
     }
 };
+
 
 
 export const getUserBills = async (req, res) => {

@@ -55,17 +55,33 @@ export const addToCart = async (req, res) => {
         }
 
         const productIndex = cart.products.findIndex(p => p.product.equals(productId));
+
         if (productIndex > -1) {
-            cart.products[productIndex].quantity += quantity;
+            const currentQuantity = cart.products[productIndex].quantity;
+            const newQuantity = currentQuantity + quantity;
+
+            if (newQuantity > product.stock) {
+                return res.status(400).json({
+                    success: false,
+                    message: "No puedes agregar más productos de los que hay en stock"
+                });
+            }
+
+            cart.products[productIndex].quantity = newQuantity;
         } else {
             cart.products.push({ product: productId, quantity });
         }
 
         await cart.save();
+
+        product.stock -= quantity;
+        await product.save();
+
         res.status(200).json({ 
             success: true,
             message: "Producto agregado al carrito",
-            cart });
+            cart 
+        });
     } catch (error) {
         res.status(500).json({ 
             success: false,
@@ -86,8 +102,16 @@ export const removeFromCart = async (req, res) => {
             });
         }
 
-        cart.products = cart.products.filter(p => !p.product.equals(productId));
-        await cart.save();
+        const productIndex = cart.products.findIndex(p => p.product.equals(productId));
+        if (productIndex > -1) {
+            const product = await Product.findById(productId);
+            if (product) {
+                product.stock += cart.products[productIndex].quantity;
+                await product.save();
+            }
+            cart.products.splice(productIndex, 1);
+            await cart.save();
+        }
 
         res.status(200).json({ 
             success: true, 

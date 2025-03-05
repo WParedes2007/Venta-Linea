@@ -1,29 +1,10 @@
 [{
   "_id": {
-    "$oid": "67bf6eb8d08c92b022cc1bd6"
+    "$oid": "67c8d4be12eedcae89c7da2a"
   },
   "user": {
-    "$oid": "67bf60b7398485d8d0f8ada1"
+    "$oid": "67c8d1c7e5aad8aee966a268"
   },
-  "products": [
-    {
-      "product": {
-        "$oid": "67bf61d6398485d8d0f8ada9"
-      },
-      "quantity": 12,
-      "_id": {
-        "$oid": "67bf6eb8d08c92b022cc1bd7"
-      }
-    },
-    {
-      "product": {
-        "$oid": "67bf7046d08c92b022cc1c03"
-      },
-      "quantity": 5,
-      "_id": {
-        "$oid": "67bf709ad08c92b022cc1c0c"
-      }
-    }
-  ],
+  "products": [],
   "__v": 1
 }]

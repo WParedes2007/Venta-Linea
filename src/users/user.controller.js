@@ -56,7 +56,7 @@ export const getUserById = async (req, res) => {
 
 export const updateUser = async (req, res) => {
     const { id } = req.params;
-    const { role, ...rest } = req.body;
+    const { role, password, ...rest } = req.body;
 
     try {
         const user = await User.findById(id);
@@ -88,6 +88,11 @@ export const updateUser = async (req, res) => {
             });
         }
 
+        if (password) {
+            const hashedPassword = await hash(password);
+            rest.password = hashedPassword;
+        }
+
         const updatedUser = await User.findByIdAndUpdate(id, { ...rest, role }, { new: true });
 
         res.status(200).json({
@@ -104,48 +109,10 @@ export const updateUser = async (req, res) => {
     }
 };
 
-export const updatePassword = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const { password } = req.body;
-
-        if (!password) {
-            return res.status(400).json({
-                success: false,
-                msg: "La contraseña no coincide"
-            });
-        }
-
-        const encryptedPassword = await hash(password);
-
-        const user = await User.findByIdAndUpdate(id, { password: encryptedPassword }, { new: true });
-
-        if (!user) {
-            return res.status(400).json({
-                success: false,
-                msg: "Usuario no encontrado"
-            });
-        }
-
-        res.status(200).json({
-            success: true,
-            msg: "Contraseña actualizada correctamente",
-            user
-        });
-
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({
-            success: false,
-            msg: "Error al actualizar la contraseña",
-            error
-        });
-    }
-};
 
 export const unsubscribe = async (req, res) => {
     try {
-        const user = await User.findByIdAndUpdate(req.usuario._id, { estado: false }, { new: true });
+        const user = await User.findByIdAndUpdate(req.usuario._id, { status: false }, { new: true });
 
         if (!user) {
             return res.status(404).json({

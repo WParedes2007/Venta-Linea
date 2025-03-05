@@ -1,76 +1,19 @@
 [{
   "_id": {
-    "$oid": "67bf61d6398485d8d0f8ada9"
-  },
-  "name": "Yogurt Griego",
-  "description": "Un Bote Grande De Yogurt Griego",
-  "price": 120,
-  "category": {
-    "$oid": "67bf61b5398485d8d0f8ada5"
-  },
-  "stock": 54,
-  "status": false,
-  "createdAt": {
-    "$date": "2025-02-26T18:47:50.522Z"
-  },
-  "updatedAt": {
-    "$date": "2025-02-26T19:43:01.025Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "67bf691c398485d8d0f8adf7"
+    "$oid": "67c8d43012eedcae89c7da1e"
   },
   "name": "Carne De Pollo",
-  "description": "Desmenuzada",
-  "price": 100,
+  "description": "Pollo Completo",
+  "price": 50,
   "category": {
-    "$oid": "67bf68ad398485d8d0f8ade8"
+    "$oid": "67c8d40c12eedcae89c7da17"
   },
-  "stock": 11,
+  "stock": 10,
   "status": true,
   "createdAt": {
-    "$date": "2025-02-26T19:18:52.602Z"
+    "$date": "2025-03-05T22:46:08.193Z"
   },
   "updatedAt": {
-    "$date": "2025-02-26T22:41:20.546Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "67bf7046d08c92b022cc1c03"
-  },
-  "name": "Carne De Cerdo",
-  "description": "En Partes",
-  "price": 100,
-  "category": {
-    "$oid": "67bf68ad398485d8d0f8ade8"
-  },
-  "stock": 0,
-  "status": true,
-  "createdAt": {
-    "$date": "2025-02-26T19:49:26.998Z"
-  },
-  "updatedAt": {
-    "$date": "2025-02-26T19:51:24.695Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "67bf7173d08c92b022cc1c21"
-  },
-  "name": "Manzana",
-  "description": "Unidades",
-  "price": 3,
-  "category": {
-    "$oid": "67bf726e1716731f66c3126d"
-  },
-  "stock": 8,
-  "status": true,
-  "createdAt": {
-    "$date": "2025-02-26T19:54:27.105Z"
-  },
-  "updatedAt": {
-    "$date": "2025-02-26T22:34:11.585Z"
+    "$date": "2025-03-05T22:48:30.917Z"
   }
 }]

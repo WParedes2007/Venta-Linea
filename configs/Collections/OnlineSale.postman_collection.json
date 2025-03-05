@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"name\": \"Mario\",\r\n  \"surname\": \"Molina\",\r\n  \"username\": \"mariomolina\",\r\n  \"email\": \"mariomol@example.com\",\r\n  \"password\": \"123456\",\r\n  \"phone\": \"87654321\",\r\n  \"role\": \"\"\r\n}\r\n\r\n",
+					"raw": "{\r\n  \"name\": \"Pichiya\",\r\n  \"surname\": \"Sisimit\",\r\n  \"username\": \"panadero\",\r\n  \"email\": \"lpichiya@gmail.com\",\r\n  \"password\": \"123456\",\r\n  \"phone\": \"45996580\",\r\n  \"role\": \"\"\r\n}\r\n\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -44,7 +44,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"email\": \"juanperez@example.com\",\r\n  \"password\": \"123456\"\r\n}\r\n",
+					"raw": "{\r\n  \"email\": \"aSisimit@gmail.com\",\r\n  \"password\": \"newpassword123\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -97,13 +97,13 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmN2Y5M2U1NmRmZjZiNzMwNzQ1OWYiLCJpYXQiOjE3NDA2MDUyOTYsImV4cCI6MTc0MDYwODg5Nn0.oGIYTNTBbF7qbD36MHh4oOyvdFOIesoD1LhcMVMWHxY",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M4ZDFjN2U1YWFkOGFlZTk2NmEyNjgiLCJpYXQiOjE3NDEyMTQxNTcsImV4cCI6MTc0MTIxNzc1N30.fJm89P9A75lZTVExPKUnDDDqd9OM1pUPD9sDWs4Rm14",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Mario\",\r\n    \"surname\": \"Molina\",\r\n    \"username\": \"mario123\", \r\n    \"email\": \"mario@example.com\",\r\n    \"phone\": \"987654321\",\r\n    \"password\": \"newpassword123\"\r\n}\r\n",
+					"raw": "{\r\n    \"name\": \"Pichiya\",\r\n    \"surname\": \"Molina\",\r\n    \"username\": \"Panadero\", \r\n    \"email\": \"aSisimit@gmail.com\",\r\n    \"phone\": \"987654321\",\r\n    \"password\": \"newpassword123\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -111,7 +111,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/onlineSale/v1/users/67bf7f93e56dff6b7307459f",
+					"raw": "http://localhost:3000/onlineSale/v1/users/67c8d1c7e5aad8aee966a268",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -121,7 +121,7 @@
 						"onlineSale",
 						"v1",
 						"users",
-						"67bf7f93e56dff6b7307459f"
+						"67c8d1c7e5aad8aee966a268"
 					]
 				}
 			},
@@ -134,7 +134,7 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmN2RlOTMyODRkZTk3YjA3YjBkMjUiLCJpYXQiOjE3NDA2MDI4NzEsImV4cCI6MTc0MDYwNjQ3MX0.VR3EZAlRgpI9XSQqlYBNjSXImcxm5-_CY21yqCYN6ig",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M4ZDFjN2U1YWFkOGFlZTk2NmEyNjgiLCJpYXQiOjE3NDEyMTQxNTcsImV4cCI6MTc0MTIxNzc1N30.fJm89P9A75lZTVExPKUnDDDqd9OM1pUPD9sDWs4Rm14",
 						"type": "text"
 					}
 				],
@@ -162,13 +162,13 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmNjBiNzM5ODQ4NWQ4ZDBmOGFkYTEiLCJpYXQiOjE3NDA1OTkwMDUsImV4cCI6MTc0MDYwMjYwNX0.tAhCr3J04mxPx5zOYmIb5Fdgv5c7qdK-WVDwyv88JGw",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M4ZDEzZTMyNmU1NWJmMmYzYzM0MjEiLCJpYXQiOjE3NDEyMTQ3MTYsImV4cCI6MTc0MTIxODMxNn0.3-bkHO0zBg_OdnD6Pc8n4YevqJ6hpA-3otknAmMnmjo",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Manzana\",\r\n    \"description\": \"Unidades\",\r\n    \"price\": 3,\r\n    \"category\": \"67bf7169d08c92b022cc1c1d\",\r\n    \"stock\": 10\r\n}",
+					"raw": "{\r\n    \"name\": \"Carne De Pollo\",\r\n    \"description\": \"Pollo Completo\",\r\n    \"price\": 50,\r\n    \"category\": \"67c8d40c12eedcae89c7da17\",\r\n    \"stock\": 15\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -412,13 +412,13 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmNjBiNzM5ODQ4NWQ4ZDBmOGFkYTEiLCJpYXQiOjE3NDA1OTkwMDUsImV4cCI6MTc0MDYwMjYwNX0.tAhCr3J04mxPx5zOYmIb5Fdgv5c7qdK-WVDwyv88JGw",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M4ZDEzZTMyNmU1NWJmMmYzYzM0MjEiLCJpYXQiOjE3NDEyMTQ3MTYsImV4cCI6MTc0MTIxODMxNn0.3-bkHO0zBg_OdnD6Pc8n4YevqJ6hpA-3otknAmMnmjo",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"Frutas\"\r\n}",
+					"raw": "{\r\n    \"name\":\"Carne\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -471,7 +471,7 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmNjBiNzM5ODQ4NWQ4ZDBmOGFkYTEiLCJpYXQiOjE3NDA1OTkwMDUsImV4cCI6MTc0MDYwMjYwNX0.tAhCr3J04mxPx5zOYmIb5Fdgv5c7qdK-WVDwyv88JGw",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M4ZDEzZTMyNmU1NWJmMmYzYzM0MjEiLCJpYXQiOjE3NDEyMTQ3MTYsImV4cCI6MTc0MTIxODMxNn0.3-bkHO0zBg_OdnD6Pc8n4YevqJ6hpA-3otknAmMnmjo",
 						"type": "text"
 					}
 				],
@@ -485,7 +485,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/onlineSale/v1/categories/67bf68ad398485d8d0f8ade8",
+					"raw": "http://localhost:3000/onlineSale/v1/categories/67c8d40c12eedcae89c7da17",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -495,7 +495,7 @@
 						"onlineSale",
 						"v1",
 						"categories",
-						"67bf68ad398485d8d0f8ade8"
+						"67c8d40c12eedcae89c7da17"
 					]
 				}
 			},
@@ -508,7 +508,7 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmNjBiNzM5ODQ4NWQ4ZDBmOGFkYTEiLCJpYXQiOjE3NDA1OTkwMDUsImV4cCI6MTc0MDYwMjYwNX0.tAhCr3J04mxPx5zOYmIb5Fdgv5c7qdK-WVDwyv88JGw",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M4ZDEzZTMyNmU1NWJmMmYzYzM0MjEiLCJpYXQiOjE3NDEyMTQ3MTYsImV4cCI6MTc0MTIxODMxNn0.3-bkHO0zBg_OdnD6Pc8n4YevqJ6hpA-3otknAmMnmjo",
 						"type": "text"
 					}
 				],
@@ -536,13 +536,13 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmNjBiNzM5ODQ4NWQ4ZDBmOGFkYTEiLCJpYXQiOjE3NDA1OTkwMDUsImV4cCI6MTc0MDYwMjYwNX0.tAhCr3J04mxPx5zOYmIb5Fdgv5c7qdK-WVDwyv88JGw",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M4ZDFjN2U1YWFkOGFlZTk2NmEyNjgiLCJpYXQiOjE3NDEyMTQ4OTYsImV4cCI6MTc0MTIxODQ5Nn0.IHBEvKabHXBxeiZBEsPriiFEAA1Qc8FrWQvK51Ek1Es",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"user\": \"67bf60b7398485d8d0f8ada1\",\r\n    \"productId\": \"67bf7046d08c92b022cc1c03\",  \r\n    \"quantity\": 5 \r\n}\r\n\r\n\r\n",
+					"raw": "{\r\n    \"productId\": \"67c8d43012eedcae89c7da1e\",\r\n    \"quantity\": 5 \r\n}\r\n\r\n\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -574,7 +574,7 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmNjBiNzM5ODQ4NWQ4ZDBmOGFkYTEiLCJpYXQiOjE3NDA1OTUzOTEsImV4cCI6MTc0MDU5ODk5MX0.p1raJ-3a_idmqmBXIpukyO6_AiwjQL5yfj908dlVdSE",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M4ZDFjN2U1YWFkOGFlZTk2NmEyNjgiLCJpYXQiOjE3NDEyMTQ4OTYsImV4cCI6MTc0MTIxODQ5Nn0.IHBEvKabHXBxeiZBEsPriiFEAA1Qc8FrWQvK51Ek1Es",
 						"type": "text"
 					}
 				],
@@ -602,12 +602,21 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmNjBiNzM5ODQ4NWQ4ZDBmOGFkYTEiLCJpYXQiOjE3NDA1OTUzOTEsImV4cCI6MTc0MDU5ODk5MX0.p1raJ-3a_idmqmBXIpukyO6_AiwjQL5yfj908dlVdSE",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M4ZDFjN2U1YWFkOGFlZTk2NmEyNjgiLCJpYXQiOjE3NDEyMTUwNjQsImV4cCI6MTc0MTIxODY2NH0.dJPj7A6ij1AmSP7qtjYVH2DLEaCKCGNZct6BLu5jlUY",
 						"type": "text"
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:3000/onlineSale/v1/carts/remove/67bf691c398485d8d0f8adf7",
+					"raw": "http://localhost:3000/onlineSale/v1/carts/remove/67c8d4be12eedcae89c7da2a",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -618,7 +627,7 @@
 						"v1",
 						"carts",
 						"remove",
-						"67bf691c398485d8d0f8adf7"
+						"67c8d4be12eedcae89c7da2a"
 					]
 				}
 			},
@@ -653,43 +662,6 @@
 			"response": []
 		},
 		{
-			"name": "ADD PURCHASE",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmNjBiNzM5ODQ4NWQ4ZDBmOGFkYTEiLCJpYXQiOjE3NDA2MDc0MTAsImV4cCI6MTc0MDYxMTAxMH0.hubOwjDD9jRvSC4sYTE8TBl4805uEWSqdD9DcyvKUqY",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"products\": [\r\n        {\r\n            \"product\": \"67bf691c398485d8d0f8adf7\",  \r\n            \"quantity\": 1\r\n        }\r\n    ],\r\n    \"shippingAddress\": \"123 Calle Ficticia, Ciudad, País\"  \r\n\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/onlineSale/v1/purchases/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"onlineSale",
-						"v1",
-						"purchases",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "HISTORY PURCHASE",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -699,7 +671,7 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmNjBiNzM5ODQ4NWQ4ZDBmOGFkYTEiLCJpYXQiOjE3NDA1OTUzOTEsImV4cCI6MTc0MDU5ODk5MX0.p1raJ-3a_idmqmBXIpukyO6_AiwjQL5yfj908dlVdSE",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M4ZDFjN2U1YWFkOGFlZTk2NmEyNjgiLCJpYXQiOjE3NDEyMTY4NjQsImV4cCI6MTc0MTIyMDQ2NH0.1KbG_OS00P9cTKAtmk_PsSDzSsdReTlDx6LWUiUgztM",
 						"type": "text"
 					}
 				],
@@ -713,7 +685,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/onlineSale/v1/purchases/history",
+					"raw": "http://localhost:3000/onlineSale/v1/bills/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -722,8 +694,8 @@
 					"path": [
 						"onlineSale",
 						"v1",
-						"purchases",
-						"history"
+						"bills",
+						""
 					]
 				}
 			},
@@ -736,7 +708,7 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmNjBiNzM5ODQ4NWQ4ZDBmOGFkYTEiLCJpYXQiOjE3NDA2MDYyMTUsImV4cCI6MTc0MDYwOTgxNX0.Ol48WgHW4P0IGXJa4nlRmkRLRBvOLhShhzpzgGbz4SM",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MzM2M1ODYyN2U1OTc1YjU3NTY1NzkiLCJpYXQiOjE3NDA4NDgyNDcsImV4cCI6MTc0MDg1MTg0N30.KfGW_EK-ebIY3IBav1y5OP2uNETHGBOcSp8-r61Tj5c",
 						"type": "text"
 					}
 				],
@@ -764,7 +736,7 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmNjBiNzM5ODQ4NWQ4ZDBmOGFkYTEiLCJpYXQiOjE3NDA2MDYyMTUsImV4cCI6MTc0MDYwOTgxNX0.Ol48WgHW4P0IGXJa4nlRmkRLRBvOLhShhzpzgGbz4SM",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MzM2M1ODYyN2U1OTc1YjU3NTY1NzkiLCJpYXQiOjE3NDA4NDgyNDcsImV4cCI6MTc0MDg1MTg0N30.KfGW_EK-ebIY3IBav1y5OP2uNETHGBOcSp8-r61Tj5c",
 						"type": "text"
 					}
 				],
@@ -780,6 +752,48 @@
 						"v1",
 						"bills",
 						"67bf6f2cd08c92b022cc1bf4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD PURCHARSE & BILL",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M4ZDFjN2U1YWFkOGFlZTk2NmEyNjgiLCJpYXQiOjE3NDEyMTQ4OTYsImV4cCI6MTc0MTIxODQ5Nn0.IHBEvKabHXBxeiZBEsPriiFEAA1Qc8FrWQvK51Ek1Es",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cartId\": \"67c8d4be12eedcae89c7da2a\",\r\n  \"shippingAddress\": \"123 Calle Juan Perez, Ciudad De Guatemala, Guatemala\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/onlineSale/v1/bills/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"onlineSale",
+						"v1",
+						"bills",
+						""
 					]
 				}
 			},
@@ -798,7 +812,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"products\": [\r\n        {\r\n            \"product\": \"67bf691c398485d8d0f8adf7\",\r\n            \"quantity\": 3\r\n        },\r\n        {\r\n            \"product\": \"67bf7173d08c92b022cc1c21\",\r\n            \"quantity\": 2\r\n        }\r\n    ],\r\n    \"shippingAddress\": \"789 Another Street, City, Country\"\r\n}\r\n",
+					"raw": "{\r\n    \"products\": [\r\n        {\r\n            \"product\": \"67bf691c398485d8d0f8adf7\",\r\n            \"quantity\": 3\r\n        }\r\n    ],\r\n    \"shippingAddress\": \"789 Another Street, City, Country\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -806,7 +820,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/onlineSale/v1/bills/67bf6f2cd08c92b022cc1bf4",
+					"raw": "http://localhost:3000/onlineSale/v1/bills/67c8d4e812eedcae89c7da36",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -816,7 +830,7 @@
 						"onlineSale",
 						"v1",
 						"bills",
-						"67bf6f2cd08c92b022cc1bf4"
+						"67c8d4e812eedcae89c7da36"
 					]
 				}
 			},
@@ -829,7 +843,7 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmNjBiNzM5ODQ4NWQ4ZDBmOGFkYTEiLCJpYXQiOjE3NDA2MDYyMTUsImV4cCI6MTc0MDYwOTgxNX0.Ol48WgHW4P0IGXJa4nlRmkRLRBvOLhShhzpzgGbz4SM",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2M4ZDEzZTMyNmU1NWJmMmYzYzM0MjEiLCJpYXQiOjE3NDEyMTUwMzIsImV4cCI6MTc0MTIxODYzMn0.44slHIe94DddAV27kOA8-EbDVf5yAh1HW159Y9gxDmY",
 						"type": "text"
 					}
 				],
@@ -843,7 +857,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/onlineSale/v1/bills/paid/67bf6f2cd08c92b022cc1bf4",
+					"raw": "http://localhost:3000/onlineSale/v1/bills/paid/67c8d4e812eedcae89c7da36",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -854,7 +868,7 @@
 						"v1",
 						"bills",
 						"paid",
-						"67bf6f2cd08c92b022cc1bf4"
+						"67c8d4e812eedcae89c7da36"
 					]
 				}
 			},

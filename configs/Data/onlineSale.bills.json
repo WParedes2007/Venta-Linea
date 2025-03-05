@@ -1,80 +1,26 @@
 [{
   "_id": {
-    "$oid": "67bf6f2cd08c92b022cc1bf4"
+    "$oid": "67c8d4e812eedcae89c7da36"
   },
   "user": {
-    "$oid": "67bf60b7398485d8d0f8ada1"
+    "$oid": "67c8d1c7e5aad8aee966a268"
   },
   "products": [
     {
       "product": {
-        "$oid": "67bf691c398485d8d0f8adf7"
-      },
-      "quantity": 2,
-      "_id": {
-        "$oid": "67bf96e35c2ca9750f4be0e5"
-      }
-    }
-  ],
-  "total": 200,
-  "status": "paid",
-  "shippingAddress": "123 New Street, City, Country",
-  "date": {
-    "$date": "2025-02-26T19:44:44.846Z"
-  },
-  "__v": 3
-},
-{
-  "_id": {
-    "$oid": "67bf70bcd08c92b022cc1c14"
-  },
-  "user": {
-    "$oid": "67bf60b7398485d8d0f8ada1"
-  },
-  "products": [
-    {
-      "product": {
-        "$oid": "67bf7046d08c92b022cc1c03"
+        "$oid": "67c8d43012eedcae89c7da1e"
       },
       "quantity": 5,
-      "price": 100,
       "_id": {
-        "$oid": "67bf70bcd08c92b022cc1c15"
+        "$oid": "67c8d4e812eedcae89c7da37"
       }
     }
   ],
-  "total": 500,
-  "status": "pending",
-  "shippingAddress": "123 Calle Ficticia, Ciudad, País",
+  "total": 250,
+  "status": "paid",
+  "shippingAddress": "123 Calle Juan Perez, Ciudad De Guatemala, Guatemala",
   "date": {
-    "$date": "2025-02-26T19:51:24.698Z"
-  },
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "67bf97f85c2ca9750f4be0f6"
-  },
-  "user": {
-    "$oid": "67bf60b7398485d8d0f8ada1"
-  },
-  "products": [
-    {
-      "product": {
-        "$oid": "67bf691c398485d8d0f8adf7"
-      },
-      "quantity": 1,
-      "price": 100,
-      "_id": {
-        "$oid": "67bf97f85c2ca9750f4be0f7"
-      }
-    }
-  ],
-  "total": 100,
-  "status": "canceled",
-  "shippingAddress": "123 Calle Ficticia, Ciudad, País",
-  "date": {
-    "$date": "2025-02-26T22:38:48.581Z"
+    "$date": "2025-03-05T22:49:12.646Z"
   },
   "__v": 0
 }]
