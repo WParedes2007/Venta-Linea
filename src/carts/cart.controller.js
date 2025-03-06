@@ -139,15 +139,36 @@ export const removeFromCart = async (req, res) => {
 
 export const clearCart = async (req, res) => {
     try {
+        const cart = await Cart.findOne({ user: req.usuario._id }).populate("products.product");
+
+        if (!cart) {
+            return res.status(404).json({
+                success: false,
+                message: "Carrito no encontrado"
+            });
+        }
+
+        
+        for (const item of cart.products) {
+            const product = item.product;
+
+            if (product) {
+                product.stock += item.quantity;
+                await product.save(); 
+        }
+
         await Cart.findOneAndDelete({ user: req.usuario._id });
-        res.status(200).json({ 
-            success: true, 
-            message: "Carrito vaciado" 
+
+        res.status(200).json({
+            success: true,
+            message: "Carrito vaciado y stock restablecido"
         });
     } catch (error) {
-        res.status(500).json({ 
-            success: false, 
-            message: "Error al vaciar el carrito", error 
+        res.status(500).json({
+            success: false,
+            message: "Error al vaciar el carrito",
+            error
         });
     }
 };
+                
