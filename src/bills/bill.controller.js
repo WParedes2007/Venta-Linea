@@ -198,7 +198,7 @@ export const updateBill = async (req, res) => {
             });
         }
 
-        // **Devolver stock de los productos actuales**
+        
         for (let i = 0; i < bill.products.length; i++) {
             await Product.findByIdAndUpdate(bill.products[i].product, {
                 $inc: { stock: bill.products[i].quantity }
@@ -208,7 +208,7 @@ export const updateBill = async (req, res) => {
         let total = 0;
         let updatedProducts = [];
 
-        // **Verificar stock y calcular precios automáticamente**
+        
         for (let i = 0; i < products.length; i++) {
             const product = await Product.findById(products[i].product);
 
@@ -221,20 +221,19 @@ export const updateBill = async (req, res) => {
 
             total += product.price * products[i].quantity;
 
-            // **Restar stock actualizado**
+            
             await Product.findByIdAndUpdate(products[i].product, {
                 $inc: { stock: -products[i].quantity }
             });
 
-            // **Guardar producto con precio automático**
+            
             updatedProducts.push({
                 product: products[i].product,
                 quantity: products[i].quantity,
-                priceAtPurchase: product.price // Precio tomado automáticamente
+                priceAtPurchase: product.price 
             });
         }
 
-        // **Actualizar la factura**
         bill.products = updatedProducts;
         bill.shippingAddress = shippingAddress;
         bill.total = total;
