@@ -11,7 +11,6 @@ import userRoutes from "../src/users/user.routes.js"
 import categoryRoutes from "../src/categories/category.routes.js"
 import productRoutes from "../src/products/product.routes.js"
 import billsRoutes from "../src/bills/bill.routes.js"
-import purchaseRoutes from "../src/purchases/purchase.routes.js"
 import cartRoutes from "../src/carts/cart.routes.js"
 import Category from "../src/categories/category.model.js"
 import Usuario from "../src/users/user.model.js"
@@ -34,7 +33,6 @@ const configurarRutas = (app) =>{
         app.use("/onlineSale/v1/categories", categoryRoutes);
         app.use("/onlineSale/v1/products", productRoutes);
         app.use("/onlineSale/v1/bills", billsRoutes);
-        app.use("/onlineSale/v1/purchases", purchaseRoutes);
         app.use("/onlineSale/v1/carts", cartRoutes);
 }
 

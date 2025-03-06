@@ -1,13 +1,12 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { createBill, getUserBills, getBillById, cancelBill, updateBill, markBillAsPaid, checkout, getPurchaseHistory } from "./bill.controller.js";
+import { createBill, getUserBills, getBillById, cancelBill, updateBill, markBillAsPaid, checkout } from "./bill.controller.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
 import { validarJWT } from "../middlewares/validar-jwt.js";
 import { validarRol } from "../middlewares/validar-roles.js";
 
 const router = Router();
 
-// Ruta para crear una nueva factura
 router.post(
     "/",
     [
@@ -20,14 +19,12 @@ router.post(
     createBill
 );
 
-// Ruta para obtener todas las facturas del usuario (dependiendo del rol)
 router.get("/", 
     [
         validarJWT,
     ],
     getUserBills);
 
-// Ruta para obtener una factura específica por ID
 router.get(
     "/:id",
     [
@@ -38,7 +35,6 @@ router.get(
     getBillById
 );
 
-// Ruta para cancelar una factura por ID (solo administradores pueden hacerlo)
 router.put(
     "/cancel/:id",
     [
@@ -50,7 +46,6 @@ router.put(
     cancelBill
 );
 
-// Ruta para actualizar una factura (solo administradores pueden hacerlo)
 router.put(
     "/:id",
     [
@@ -62,7 +57,6 @@ router.put(
     updateBill
 );
 
-// Ruta para marcar una factura como pagada (solo administradores pueden hacerlo)
 router.put(
     "/paid/:id", 
     [
@@ -74,7 +68,6 @@ router.put(
     markBillAsPaid
 );
 
-// Ruta para realizar el checkout
 router.post(
     "/checkout",
     [

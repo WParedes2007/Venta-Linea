@@ -7,6 +7,24 @@ export const getUsers = async (req = request, res = response) => {
     try {
         const { limite = 10, desde = 0 } = req.query;
 
+        if (req.usuario.role === "CLIENT_ROLE") {
+            const userId = req.usuario._id;
+
+            const user = await User.findById(userId);
+            if (!user) {
+                return res.status(404).json({
+                    success: false,
+                    message: "Usuario no encontrado"
+                });
+            }
+
+            return res.status(200).json({
+                success: true,
+                total: 1,
+                users: [user] 
+            });
+        } 
+        
         const query = { estado: true };
 
         const [total, users] = await Promise.all([
@@ -24,7 +42,7 @@ export const getUsers = async (req = request, res = response) => {
     } catch (error) {
         res.status(500).json({
             success: false,
-            message: "Error al obtener usuario",
+            message: "Error al obtener usuarios",
             error
         });
     }
@@ -33,11 +51,23 @@ export const getUsers = async (req = request, res = response) => {
 export const getUserById = async (req, res) => {
     try {
         const { id } = req.params;
+
+        if (req.usuario.role === "CLIENT_ROLE") {
+            const userId = req.usuario._id.toString(); 
+
+            if (userId !== id) {
+                return res.status(403).json({
+                    success: false,
+                    msg: "No tienes permisos para ver este perfil"
+                });
+            }
+        }
+
         const user = await User.findById(id);
         if (!user) {
             return res.status(404).json({
                 success: false,
-                msg: "Usuario Not Found"
+                msg: "Usuario no encontrado"
             });
         }
 
@@ -48,11 +78,12 @@ export const getUserById = async (req, res) => {
     } catch (error) {
         res.status(500).json({
             success: false,
-            msg: "Error al obtener usuario",
+            msg: "Error al obtener el usuario",
             error
         });
     }
 };
+
 
 export const updateUser = async (req, res) => {
     const { id } = req.params;
@@ -112,7 +143,7 @@ export const updateUser = async (req, res) => {
 
 export const unsubscribe = async (req, res) => {
     try {
-        const user = await User.findByIdAndUpdate(req.usuario._id, { status: false }, { new: true });
+        const user = await User.findByIdAndUpdate(req.usuario._id, { estado: false }, { new: true });
 
         if (!user) {
             return res.status(404).json({

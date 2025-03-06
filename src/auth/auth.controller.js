@@ -54,11 +54,21 @@ export const login = async (req, res) => {
 
 export const register = async (req, res) => {
     try {
-        const { name, surname, username, email, phone, password, role } = req.body; 
+        const { name, surname, username, email, phone, password } = req.body; 
+
+        const existingUser = await Usuario.findOne({
+            $or: [{ email }, { username }]
+        });
+
+        if (existingUser) {
+            return res.status(400).json({
+                msg: "El correo o nombre de usuario ya están en uso"
+            });
+        }
+
+        const userRole = "CLIENT_ROLE"; 
 
         const encryptedPassword = await hash(password);
-
-        const userRole = role && role.trim() !== "" ? role : "CLIENT_ROLE"; 
 
         const user = await Usuario.create({
             name,

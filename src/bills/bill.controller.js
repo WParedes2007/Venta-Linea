@@ -178,9 +178,7 @@ export const cancelBill = async (req, res) => {
 };
 
 export const updateBill = async (req, res) => {
-
     const { id } = req.params;
-
     const { products, shippingAddress } = req.body;
 
     try {
@@ -188,8 +186,8 @@ export const updateBill = async (req, res) => {
 
         if (!bill) {
             return res.status(404).json({
-                success: false, 
-                message: "Factura no encontrada" 
+                success: false,
+                message: "Factura no encontrada"
             });
         }
 
@@ -200,19 +198,17 @@ export const updateBill = async (req, res) => {
             });
         }
 
-        if (req.usuario.role === "CLIENT_ROLE" && bill.user.toString() !== req.usuario._id.toString()) {
-            return res.status(403).json({ 
-                success: false, 
-                message: "No tienes permiso para actualizar esta factura" 
+        // **Devolver stock de los productos actuales**
+        for (let i = 0; i < bill.products.length; i++) {
+            await Product.findByIdAndUpdate(bill.products[i].product, {
+                $inc: { stock: bill.products[i].quantity }
             });
         }
 
-        for (let i = 0; i < bill.products.length; i++) {
-            await Product.findByIdAndUpdate(bill.products[i].product, { $inc: { stock: bill.products[i].quantity } });
-        }
-
         let total = 0;
+        let updatedProducts = [];
 
+        // **Verificar stock y calcular precios automáticamente**
         for (let i = 0; i < products.length; i++) {
             const product = await Product.findById(products[i].product);
 
@@ -225,33 +221,37 @@ export const updateBill = async (req, res) => {
 
             total += product.price * products[i].quantity;
 
-            await Product.findByIdAndUpdate(products[i].product, { $inc: { stock: -products[i].quantity } });
+            // **Restar stock actualizado**
+            await Product.findByIdAndUpdate(products[i].product, {
+                $inc: { stock: -products[i].quantity }
+            });
+
+            // **Guardar producto con precio automático**
+            updatedProducts.push({
+                product: products[i].product,
+                quantity: products[i].quantity,
+                priceAtPurchase: product.price // Precio tomado automáticamente
+            });
         }
 
-        bill.products = products.map(item => ({
-            product: item.product,
-            quantity: item.quantity,
-            price: item.priceAtPurchase
-        }));
+        // **Actualizar la factura**
+        bill.products = updatedProducts;
         bill.shippingAddress = shippingAddress;
         bill.total = total;
 
         await bill.save();
 
-        res.status(200).json({ 
-            success: true, 
-            message: "Factura actualizada exitosamente", 
-            bill 
+        res.status(200).json({
+            success: true,
+            message: "Factura actualizada exitosamente",
+            bill
         });
-
     } catch (error) {
-        
-        res.status(500).json({ 
-            success: false, 
-            message: "Error al editar la factura", 
-            error 
+        res.status(500).json({
+            success: false,
+            message: "Error al editar la factura",
+            error
         });
-
     }
 };
 

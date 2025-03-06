@@ -8,12 +8,50 @@
   "category": {
     "$oid": "67c8d40c12eedcae89c7da17"
   },
-  "stock": 10,
+  "stock": 5,
   "status": true,
   "createdAt": {
     "$date": "2025-03-05T22:46:08.193Z"
   },
   "updatedAt": {
-    "$date": "2025-03-05T22:48:30.917Z"
+    "$date": "2025-03-06T06:02:45.923Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67c93193f84ca98008592b87"
+  },
+  "name": "Manzanas",
+  "description": "Color Rojas Y Verdes",
+  "price": 2,
+  "category": {
+    "$oid": "67c93117f84ca98008592b82"
+  },
+  "stock": 93,
+  "status": true,
+  "createdAt": {
+    "$date": "2025-03-06T05:24:35.999Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-06T06:02:45.935Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67c93bb13da601b5434936c1"
+  },
+  "name": "Zanahorias",
+  "description": "De Granjas Los Bimbos",
+  "price": 2,
+  "category": {
+    "$oid": "67c93b6d3da601b5434936bd"
+  },
+  "stock": 97,
+  "status": true,
+  "createdAt": {
+    "$date": "2025-03-06T06:07:45.361Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-06T06:10:10.537Z"
   }
 }]

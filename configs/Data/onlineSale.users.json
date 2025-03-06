@@ -1,12 +1,12 @@
 [{
   "_id": {
-    "$oid": "67c8d13e326e55bf2f3c3421"
+    "$oid": "67c92f17b3171daea5497f6e"
   },
   "name": "Admin",
   "surname": "Principal",
   "username": "admin",
   "email": "admin@gmail.com",
-  "password": "$argon2id$v=19$m=65536,t=3,p=4$65G8nrYfSY6fm3tDmr3lqg$5OgHfAWXy8yjMShJ2G/IEhk76bJqRDDUuWPN6Tr8T9E",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$9zawP9rIAhCPziguB5gOjg$mGtu5sDlxFjBsJk5UZqLLDP1iL6vAhblXp1W4ZTJc9Q",
   "phone": "12345678",
   "role": "ADMIN_ROLE",
   "estado": true,
@@ -21,8 +21,23 @@
   "surname": "Molina",
   "username": "Panadero",
   "email": "aSisimit@gmail.com",
-  "password": "$argon2id$v=19$m=65536,t=3,p=4$Tr5icb0Maa4WgEYaOi5Cvg$2lhnlUzmKhIJrmtWkMN9/D0JddSECCKAPxPNTcvSlgo",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$Z7kQtjnZs7UTucWrkpDMVg$urQZdP/nu+pOW56FyLHdfV7aZSOlBHhmgj3OdSlQIB8",
   "phone": "987654321",
+  "role": "CLIENT_ROLE",
+  "estado": true,
+  "google": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c930d7f84ca98008592b7d"
+  },
+  "name": "Herbet",
+  "surname": "Figureoa",
+  "username": "Joaki",
+  "email": "hfigueroa@gmail.com",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$MP2XRP5siiU6N6MCpqnGSA$jsAkQ5bDKz8HD+7UC6cJZbs7dhJbVhpXLOakxFrxJvo",
+  "phone": "50527825",
   "role": "CLIENT_ROLE",
   "estado": true,
   "google": false,

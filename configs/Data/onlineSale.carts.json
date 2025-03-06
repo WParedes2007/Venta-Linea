@@ -5,6 +5,44 @@
   "user": {
     "$oid": "67c8d1c7e5aad8aee966a268"
   },
+  "products": [
+    {
+      "product": {
+        "$oid": "67c8d43012eedcae89c7da1e"
+      },
+      "quantity": 3,
+      "_id": {
+        "$oid": "67c93a856fba387329391d85"
+      }
+    },
+    {
+      "product": {
+        "$oid": "67c93193f84ca98008592b87"
+      },
+      "quantity": 2,
+      "_id": {
+        "$oid": "67c93a856fba387329391d88"
+      }
+    },
+    {
+      "product": {
+        "$oid": "67c93bb13da601b5434936c1"
+      },
+      "quantity": 3,
+      "_id": {
+        "$oid": "67c93c423da601b5434936ca"
+      }
+    }
+  ],
+  "__v": 3
+},
+{
+  "_id": {
+    "$oid": "67c93208f84ca98008592b8d"
+  },
+  "user": {
+    "$oid": "67c930d7f84ca98008592b7d"
+  },
   "products": [],
-  "__v": 1
+  "__v": 3
 }]

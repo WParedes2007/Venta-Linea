@@ -17,12 +17,22 @@ router.post(
     "/add",
     [
         validarJWT,
-        check("productId", "El ID del producto es obligatorio").isMongoId(),
-        check("quantity", "La cantidad debe ser mayor a 0").isInt({ min: 1 }),
+        check("products")
+            .custom((value, { req }) => {
+                if (!Array.isArray(value) && (!req.body.productId || !req.body.quantity)) {
+                    throw new Error("Debe ser un array de productos o un solo producto con productId y quantity");
+                }
+                return true;
+            }),
+        check("products.*.productId", "El ID del producto es obligatorio").optional().isMongoId(),
+        check("products.*.quantity", "La cantidad debe ser mayor a 0").optional().isInt({ min: 1 }),
+        check("productId", "El ID del producto es obligatorio").optional().isMongoId(),
+        check("quantity", "La cantidad debe ser mayor a 0").optional().isInt({ min: 1 }),
         validarCampos
     ],
     addToCart
 );
+
 
 router.delete(
     "/remove/:productId",

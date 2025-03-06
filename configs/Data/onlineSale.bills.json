@@ -23,4 +23,65 @@
     "$date": "2025-03-05T22:49:12.646Z"
   },
   "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c93277f84ca98008592b98"
+  },
+  "user": {
+    "$oid": "67c930d7f84ca98008592b7d"
+  },
+  "products": [
+    {
+      "product": {
+        "$oid": "67c93193f84ca98008592b87"
+      },
+      "quantity": 4,
+      "_id": {
+        "$oid": "67c93277f84ca98008592b99"
+      }
+    }
+  ],
+  "total": 8,
+  "status": "pending",
+  "shippingAddress": "456 Calle Domingo Juarez, Ciudad De Guatemala, Guatemala",
+  "date": {
+    "$date": "2025-03-06T05:28:23.134Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67c93628f84ca98008592bc2"
+  },
+  "user": {
+    "$oid": "67c930d7f84ca98008592b7d"
+  },
+  "products": [
+    {
+      "product": {
+        "$oid": "67c8d43012eedcae89c7da1e"
+      },
+      "quantity": 2,
+      "_id": {
+        "$oid": "67c938398d0e36831b700680"
+      }
+    },
+    {
+      "product": {
+        "$oid": "67c93193f84ca98008592b87"
+      },
+      "quantity": 1,
+      "_id": {
+        "$oid": "67c938398d0e36831b700681"
+      }
+    }
+  ],
+  "total": 102,
+  "status": "pending",
+  "shippingAddress": "789 Another Street, City, Country",
+  "date": {
+    "$date": "2025-03-06T05:44:08.820Z"
+  },
+  "__v": 1
 }]

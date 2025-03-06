@@ -1,14 +1,14 @@
 [{
   "_id": {
-    "$oid": "67c8d13e326e55bf2f3c341b"
+    "$oid": "67c92f17b3171daea5497f68"
   },
   "name": "General",
   "status": true,
   "createdAt": {
-    "$date": "2025-03-05T22:33:34.301Z"
+    "$date": "2025-03-06T05:13:59.278Z"
   },
   "updatedAt": {
-    "$date": "2025-03-05T22:33:34.301Z"
+    "$date": "2025-03-06T05:13:59.278Z"
   }
 },
 {
@@ -22,5 +22,31 @@
   },
   "updatedAt": {
     "$date": "2025-03-05T22:46:57.006Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67c93117f84ca98008592b82"
+  },
+  "name": "Frutas",
+  "status": true,
+  "createdAt": {
+    "$date": "2025-03-06T05:22:31.476Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-06T05:22:31.476Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67c93b6d3da601b5434936bd"
+  },
+  "name": "Vegetales",
+  "status": true,
+  "createdAt": {
+    "$date": "2025-03-06T06:06:37.790Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-06T06:06:37.790Z"
   }
 }]
